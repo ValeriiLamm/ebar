@@ -1,0 +1,47 @@
+@keyframes slideOut {
+    0% {width: 0vw; }
+    100% {width: 15vw;}
+}
+
+@keyframes slideIn {
+    0% {width: 15vw; }
+    100% {width: 0vw;}
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    height: 100wh;
+    padding: 0;
+    margin: 0;
+    /* background-color: rgba(174, 168, 159, 0.818); */
+    background-color: #CCCC00;
+}
+
+.slideOut {
+    animation: slideOut 1.5s;
+    animation-fill-mode: forwards;
+}
+
+.slideIn {
+    animation: slideIn 1.5s;
+    animation-fill-mode: forwards;
+}
+
+.navlogo {
+    height: 5%;
+    text-align: center;
+    font-size: larger;
+}
+
+.navlink {
+    text-align: center;
+    border: 1px solid black;
+    color: black;
+    text-decoration: none;
+}
+
+.navlink:hover { transform: scale(1.1); }
+
+
