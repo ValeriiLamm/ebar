@@ -1,0 +1,82 @@
+
+.searchPage {
+    height: 100vh;
+    width: 100vw;
+    color: white;
+  }
+
+  .searchBar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    border-radius: 10px;
+    border: 3px solid silver;
+    width: 84%;
+    height: 10vh;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 2px;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+
+  .searchBar button {
+    height: 50%;
+  }
+
+  .searchGroup {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 90%;
+    margin-bottom: 2px;
+    border-radius: 10px;
+  }
+
+  .searchGroup input {
+    border-radius: 5px;
+    height: 60%;
+    background-color: antiquewhite;
+  }
+
+  .searchGroup laber {
+    font-size: small;
+  }
+
+  .resultContainer {
+    border-radius: 10px;
+    border: 3px solid silver;
+    width: 84%;
+    height: 89vh;
+    position: fixed;
+    top: 11vh;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    padding: 2px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: start;
+    overflow-y: scroll;
+  }
+
+  .options {
+    position: absolute;
+    right: 7%;
+    top: 120%;
+    height: 40vh;
+    width: 30%;
+    z-index: 1000;
+    border-radius: 10px;
+    border: 3px solid silver;
+    z-index: 1;
+    opacity: 1;
+    background-color: black;
+  }
+
+  .invis {
+    display: none;
+  }
