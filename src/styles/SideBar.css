@@ -1,0 +1,60 @@
+@keyframes openSub {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 250px;
+  }
+}
+
+@keyframes closeSub {
+  0% {
+    height: 25px;
+  }
+  100% {
+    height: 0;
+  }
+}
+
+.sideBar {
+    background-color: #5C3D2E;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 15%;
+    height: 100%;
+    border-right: 1px solid silver;
+    overflow-y: scroll;
+  }
+
+.primaryCategory button {
+  width: 80%;
+}
+
+.secondaryCategoryContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.secondaryCategoryContainer button {
+  width: 90%;
+}
+
+.selected {
+  background-color: #da7223;
+}
+
+.open {
+  animation: openSub 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.close {
+  animation: closeSub 1.5s;
+  animation-fill-mode: backwards;
+}
+
+.sideBar div:first-child {
+  margin-top: 50px;
+}

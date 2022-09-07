@@ -5,6 +5,10 @@ import Navbar from './components/Navbar';
 import menu from './assets/icons/bars-solid.svg'
 import { useState, useRef, useEffect } from 'react';
 import Search from './pages/Search';
+import AddProduct from './pages/AddProduct';
+import ErrorModal from './components/ErrorModal';
+import CartIcon from './components/CartIcon';
+import Checkout from './pages/Checkout';
 
 function App() {
   const [nav, setNav] = useState(false);
@@ -12,6 +16,9 @@ function App() {
   const [showButton, setShowButton] = useState(true)
   const menuClicks = useRef(false);
   const clickRef = useRef();
+  const [errorMessage, setErrorMessage ] = useState('')
+  const [cart, setCart] = useState([])
+  const [spin, setSpin] = useState(false)
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -38,11 +45,14 @@ function App() {
         setShowButton(false)
       }}>
         <img src={menu} alt='menu'/></button>}
+        <CartIcon setErrorMessage={setErrorMessage} spin={spin} cart={cart}/>
       {/* have to anaimate the toggle button */}
+      {errorMessage && <ErrorModal errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>}
       <Routes>
-        <Route path='/search' element={<Search/>}></Route>
+        <Route path='/search' element={<Search setSpin={setSpin} cart={cart} setCart={setCart} setErrorMessage={setErrorMessage}/>}></Route>
         <Route path='/' element={<Homepage/>}></Route>
-        <Route path='/add' ></Route>
+        <Route path='/add' element={<AddProduct setErrorMessage={setErrorMessage}/>}></Route>
+        <Route path='/checkout' element={<Checkout setCart={setCart} cart={cart}/>}></Route>
       </Routes>
       </BrowserRouter>
     </div>

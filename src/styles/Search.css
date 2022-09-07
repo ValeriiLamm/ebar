@@ -1,8 +1,11 @@
-
 .searchPage {
     height: 100vh;
     width: 100vw;
     color: white;
+  }
+
+  input {
+    border: 0;
   }
 
   .searchBar {
@@ -10,7 +13,8 @@
     right: 0;
     top: 0;
     border-radius: 10px;
-    border: 3px solid silver;
+    border: 1px solid silver;
+    border-left:0;
     width: 84%;
     height: 10vh;
     margin-bottom: 5px;
@@ -21,6 +25,7 @@
     padding: 2px;
     box-sizing: border-box;
     z-index: 1;
+    background-color: #5C3D2E;
   }
 
   .searchBar button {
@@ -47,8 +52,10 @@
   }
 
   .resultContainer {
+    background-color: #5C3D2E;
     border-radius: 10px;
-    border: 3px solid silver;
+    border: 1px solid silver;
+    border-left:0 ;
     width: 84%;
     height: 89vh;
     position: fixed;
@@ -80,3 +87,41 @@
   .invis {
     display: none;
   }
+
+  .sliderGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 25%;
+  }
+  
+  .sliderGroup div {
+    width: 50%;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .sliderGroup div>input {
+      width: 50%;
+      margin-left: 5px;
+  }
+
+  .inputGroup.select.up {
+    height: 100%;
+    width: 25%;
+    margin: 0 5px 0 5px;
+  }
+
+  .inputGroup.select.up option {
+    width: 25%;
+  }
+
+.resultContainer .noItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  margin-left: 32%;
+  margin-right: auto;
+}

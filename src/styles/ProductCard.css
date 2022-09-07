@@ -1,12 +1,14 @@
 .productCard {
     border-radius: 10px;
-    border: 3px solid silver;
+    border: 0px solid silver;
     flex-basis: 25%;
     margin: 5px 25px 5px 25px;
     height: 60%;
     display: flex;
     flex-direction: column;
     justify-content: end;
+    font-size: 14px;
+    background-color: #2D2424;
 }
 
 h4 {
@@ -19,6 +21,10 @@ h4 {
 
 .cardTitle {
     flex-direction: column;
+}
+
+.cardTitle p {
+    margin-right: 5px;
 }
 
 .cardTitle > div {
@@ -37,6 +43,16 @@ h4 {
     width: 20px;
     height: 20px;
     z-index: 1000;
+    padding-bottom: 25px;
+    background-color:#2D2424;
+}
+
+.imageGroup button {
+    filter: brightness(1);
+}
+
+.imageGroup button img {
+    filter: invert(100%);
 }
 
 .cardDetails {
@@ -56,6 +72,42 @@ h4 {
 }
 
 .productImage {
-    height: 100px;
+    height: 120px;
     width: 100px;
+}
+
+.cardDetails button {
+    margin: 0 1px 0 1px;
+}
+
+@keyframes greenShift {
+    0% {
+        background-color: #E0C097;
+    }
+    50% {
+        background-color: rgb(18, 182, 18);
+    }
+    100% {
+        background-color: #E0C097;
+    }
+}
+
+@keyframes redShift {
+    0% {
+        background-color: #E0C097;
+    }
+    50% {
+        background-color: rgb(196, 27, 27);
+    }
+    100% {
+        background-color: #E0C097;
+    }
+}
+
+.green {
+    animation: greenShift 1s;
+}
+
+.red {
+    animation: redShift 1s;
 }

@@ -1,21 +1,72 @@
 import React from "react";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import "../styles/Search.css";
 
-export default function SearchBar() {
-    const [categories, setCategories] = useState([{category: 'Whiskey', subcategory: ['Bourbon', 'Scotch']}, {category: 'Vodka', subcategory: []}])
-    const [openDropdown, setDropdown] = useState(false)
+export default function SearchBar(props) {
+  const {priceArr, product, setProduct, countryList} = props
+
 
   return (
     <div className="searchBar">
       <div className="searchGroup">
         <label className="searchLabel">Search</label>
-        <input type="text" className="searchInput"></input>
+        <input
+          value={`${product.title}`}
+          onChange={(e) => {
+            setProduct((prev) => ({
+              ...prev,
+              title: e.target.value,
+            }));
+          }}
+          type="text"
+          className="searchInput"
+        ></input>
       </div>
-      <div className={openDropdown ? "options" : "options invis"}>
+      <div className="inputGroup select up">
+        <label>Country:</label>
+        <select onChange={(e) => setProduct(prev => ({
+          ...prev, country: e.target.value
+        }))}>
+          <option value={""} defaultValue>---Chose a country---</option>
+          {countryList.map((e) => (
+            <option value={e}>{e}</option>
+          ))}
+        </select>
       </div>
-      <button onClick={() => setDropdown(prev => !prev)}>Options</button>
-      <button>Search</button>
+      <div className="sliderGroup">
+        <div>
+        <label>Min</label>
+        <input type={'number'} id="min" min={priceArr[0]} max={priceArr[1]} placeholder={priceArr[0]}
+        onChange={(e) => {
+          setProduct(prev => ({
+            ...prev, price: [Number(e.target.value), prev.price[1]]
+          }))
+        }}/>
+        </div>
+        <div>
+        <label>Max</label>
+        <input type={'number'} id="max" min={priceArr[0]} max={priceArr[1]} placeholder={priceArr[1]}
+                onChange={(e) => {
+                  setProduct(prev => ({
+                    ...prev, price: [prev.price[0], Number(e.target.value)]
+                  }))
+                }}/>
+        </div>
+        {/* <span>{priceArr[0]}</span>
+        <input
+          min={priceArr[0]}
+          max={priceArr[1]}
+          onChange={(e) => {
+            setProduct((prev) => ({
+              ...prev,
+              price: [...priceArr[0], +e.target.value],
+            }));
+            console.log(product)
+          }}
+          type="range"
+        />
+        <span>{priceArr[1]}</span> */}
+      </div>
     </div>
   );
 }
