@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {NavLink} from 'react-router-dom'
 import '../App.css';
 import cartIcon from '../assets/icons/cart-shopping-solid.svg'
@@ -39,7 +39,7 @@ export default function CartIcon(props) {
             setErrorMessage('Need at least 1 item to proceed to checkout')
           }
         }} to={cart.length > 0 ? '/checkout' : '/search'}>
-<img src={picChange ? cartIcon : searchIcon} alt='picture of a cart'/>
+<img src={picChange ? cartIcon : searchIcon} alt='cart'/>
 {cart.length > 0 && <div className={spin ? "circleDiv spin" : "circleDiv"}>
             {quantity}
         </div>}
