@@ -1,15 +1,12 @@
-import {React, useEffect, useRef} from "react";
+import {React, useRef} from "react";
 import "../styles/ProductCard.css";
 import { useState } from "react";
-import prev from "../assets/icons/angle-left-solid.svg";
-import next from "../assets/icons/angle-right-solid.svg";
 import ImageGroup from "./ImageGroup";
 
 export default function ProductCard(props) {
   const { product, searchProduct, setProduct, setCart, cart, setSpin} = props;
   const [green, setGreen] = useState(false)
   const [red, setRed] = useState(false)
-  const [disabled, setDisabled] = useState(true)
   const quantityRef = useRef(0)
 
   function addProduct () {

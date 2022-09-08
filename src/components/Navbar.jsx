@@ -1,11 +1,10 @@
-import {React, useState, useEffect} from 'react'
+import {React} from 'react'
 import {NavLink} from 'react-router-dom'
 import '../styles/Navbar.css'
 
 
 export default function Navbar(props) {
     const {nav, clickRef,setNav, cart} = props
-    const {show, setShow} = useState(true)
     const navLinks = [{path: '/search', name: "Search"}, {path: '/add', name: "Add product"}, {path: '/', name: "Home"}];
     
 
