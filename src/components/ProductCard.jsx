@@ -6,7 +6,7 @@ import next from "../assets/icons/angle-right-solid.svg";
 import ImageGroup from "./ImageGroup";
 
 export default function ProductCard(props) {
-  const { product, searchProduct, setProduct, setCart, cart, setSpin, setIndividualProduct } = props;
+  const { product, searchProduct, setProduct, setCart, cart, setSpin} = props;
   const [green, setGreen] = useState(false)
   const [red, setRed] = useState(false)
   const [disabled, setDisabled] = useState(true)

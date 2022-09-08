@@ -11,7 +11,9 @@ import LoadingIcon from '../components/LoadingIcon'
 
 
 export default function Search(props) {
-  const {setErrorMessage, setCart, cart, setSpin} = props
+  const {
+    // setErrorMessage, 
+    setCart, cart, setSpin} = props
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const [tags, setTags] = useState([])
@@ -316,7 +318,7 @@ export default function Search(props) {
       <div className='resultContainer'>
       {products.length === 0 && !loading && (
           <div className='noItems'>
-            <img src={xmark} />
+            <img src={xmark} alt="xmark"/>
             <p>There are no product fitting given search parameters</p>
           </div>
         )}
