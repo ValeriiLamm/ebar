@@ -1,6 +1,7 @@
 import axios from "axios"
 
-const baseUrl = 'http://localhost:8080/'
+// const baseUrl = 'http://localhost:8080/'
+const baseUrl = 'https://sensational-arithmetic-a7b9ff.netlify.app'
 
 async function getAllProducts () {
     try {
