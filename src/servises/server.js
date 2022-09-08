@@ -7,7 +7,7 @@ async function getAllProducts () {
     try {
         const responce = await axios.get(baseUrl + 'products/getAll', {
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Origin': 'sensational-arithmetic-a7b9ff.netlify.app',
                 'Content-Type': 'application/json',
               }
         })
@@ -22,7 +22,7 @@ async function addNewProduct (product) {
     try {
         const responce = await axios.post(baseUrl + 'products/addProduct', product, {
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Origin': 'sensational-arithmetic-a7b9ff.netlify.app',
                 'Content-Type': 'application/json',
               }
         })
@@ -37,7 +37,7 @@ async function getSearchData () {
     try {
         const responce = await axios.get(baseUrl + 'products/getSearchData', {
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Origin': 'sensational-arithmetic-a7b9ff.netlify.app',
                 'Content-Type': 'application/json',
               }
         })
@@ -52,7 +52,7 @@ async function searchForProducts (product) {
     try {
         const responce = await axios.post(baseUrl + 'products/findProducts', product, {
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Origin': 'sensational-arithmetic-a7b9ff.netlify.app',
                 'Content-Type': 'application/json',
               }
         })
@@ -67,7 +67,7 @@ async function getProductById (id) {
     try {
         const responce = await axios.get(baseUrl + id, {
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Origin': 'sensational-arithmetic-a7b9ff.netlify.app',
                 'Content-Type': 'application/json',
               }
         })
