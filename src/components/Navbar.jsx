@@ -4,9 +4,9 @@ import '../styles/Navbar.css'
 
 
 export default function Navbar(props) {
-    const {nav, clickRef,setNav} = props
+    const {nav, clickRef,setNav, cart} = props
     const {show, setShow} = useState(true)
-    const navLinks = [{path: '/search', name: "Search"}, {path: '/add', name: "Add product"}, {path: '/', name: "Home"}, {path: '/checkout', name: "Checkout"}];
+    const navLinks = [{path: '/search', name: "Search"}, {path: '/add', name: "Add product"}, {path: '/', name: "Home"}];
     
 
   return (
@@ -17,6 +17,7 @@ export default function Navbar(props) {
             {navLinks.map((e,i) => (
              (window.location.pathname === e.path || <NavLink  key={i} to={nav ? e.path : window.location.pathname} className={nav ? 'navlink expand ' : 'navlink shrink'} onClick={() => setNav(false)}>{e.name}</NavLink>)
             ))}
+            {cart.length > 0 && (window.location.pathname === '/checkout' || <NavLink to={nav ? '/checkout' : window.location.pathname} className={nav ? 'navlink expand ' : 'navlink shrink'} onClick={() => setNav(false)}>Checkout</NavLink>)}
     </div>
   )
 }

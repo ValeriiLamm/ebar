@@ -16,6 +16,7 @@
   }
 }
 
+
 .sideBar {
     background-color: #5C3D2E;
     position: fixed;
@@ -25,7 +26,14 @@
     height: 100%;
     border-right: 1px solid silver;
     overflow-y: scroll;
+}
+
+@media screen and (max-width: 429px ) {
+  .sideBar {
+    width: 30%;
   }
+}
+
 
 .primaryCategory button {
   width: 80%;

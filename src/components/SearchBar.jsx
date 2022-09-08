@@ -8,6 +8,7 @@ export default function SearchBar(props) {
 
   return (
     <div className="searchBar">
+      <div className="searchAndCountryGroup">
       <div className="searchGroup">
         <label className="searchLabel">Search</label>
         <input
@@ -33,7 +34,10 @@ export default function SearchBar(props) {
           ))}
         </select>
       </div>
+      </div>
       <div className="sliderGroup">
+        <span>Price</span>
+        <div>
         <div>
         <label>Min</label>
         <input type={'number'} id="min" min={priceArr[0]} max={priceArr[1]} placeholder={priceArr[0]}
@@ -51,6 +55,7 @@ export default function SearchBar(props) {
                     ...prev, price: [prev.price[0], Number(e.target.value)]
                   }))
                 }}/>
+        </div>
         </div>
         {/* <span>{priceArr[0]}</span>
         <input

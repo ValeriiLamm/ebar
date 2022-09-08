@@ -7,11 +7,13 @@ import xmark from '../assets/icons/xmark-solid.svg'
 import SideBar from '../components/SideBar'
 import { getAllProducts, getSearchData, searchForProducts } from '../servises/server'
 import { useEffect } from 'react'
+import LoadingIcon from '../components/LoadingIcon'
 
 
 export default function Search(props) {
   const {setErrorMessage, setCart, cart, setSpin} = props
   const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(false)
   const [tags, setTags] = useState([])
   const [brands, setBrands] = useState([])
   const [priceArr, setPriceArr] = useState([0,1000])
@@ -287,16 +289,20 @@ export default function Search(props) {
 
   useEffect(() => {
     (async () => {
+      setLoading(true)
       const allProducts = await getAllProducts()
       setProducts(allProducts.data.data)
+      setLoading(false)
     })()
   }, [])
 
   useEffect(() => {
     (async () => {
+      setLoading(true)
       try {
         const response = await searchForProducts(product);
         setProducts(response.data.data);
+        setLoading(false)
       } catch (err) {
         console.log(err);
       }
@@ -308,13 +314,14 @@ export default function Search(props) {
       <SearchBar countryList={countryList} setProduct={setProduct} product={product} priceArr={priceArr}/>
       <SideBar setTags={setTags} tags={tags} brands={brands} setProduct={setProduct} product={product}/>
       <div className='resultContainer'>
-      {products.length === 0 && (
+      {products.length === 0 && !loading && (
           <div className='noItems'>
             <img src={xmark} />
             <p>There are no product fitting given search parameters</p>
           </div>
         )}
-       {products.map((element) => (
+      {loading && <LoadingIcon/>}
+       {!loading && products.map((element) => (
       <ProductCard setSpin={setSpin} cart={cart} setCart={setCart} searchProduct={product} setProduct={setProduct} key={element._id} product={element}/>
        ))}
       </div>

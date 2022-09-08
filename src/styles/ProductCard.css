@@ -11,6 +11,22 @@
     background-color: #2D2424;
 }
 
+
+@media screen and (max-height: 960px) and (max-width: 800px){
+    .productCard {
+        height: 30%;
+        margin-top: 10%;
+    }
+
+    .productCard .imageGroup {
+        height: 100px;
+    }
+
+    .productCard p {
+        margin: 0;
+    }
+}
+
 h4 {
     text-align: center;
 }

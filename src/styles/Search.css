@@ -1,121 +1,129 @@
 .searchPage {
-    height: 100vh;
-    width: 100vw;
-    color: white;
-  }
+  height: 100vh;
+  width: 100vw;
+  color: white;
+}
 
-  input {
-    border: 0;
-  }
+input {
+  border: 0;
+}
 
-  .searchBar {
-    position: fixed;
-    right: 0;
-    top: 0;
-    border-radius: 10px;
-    border: 1px solid silver;
-    border-left:0;
-    width: 84%;
-    height: 10vh;
-    margin-bottom: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 2px;
-    box-sizing: border-box;
-    z-index: 1;
-    background-color: #5C3D2E;
-  }
+.searchBar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  border-radius: 10px;
+  border: 1px solid silver;
+  border-left: 0;
+  width: 84%;
+  height: 10vh;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 2px;
+  box-sizing: border-box;
+  z-index: 1;
+  background-color: #5c3d2e;
+}
 
-  .searchBar button {
-    height: 50%;
-  }
+.searchBar button {
+  height: 50%;
+}
 
-  .searchGroup {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    height: 90%;
-    margin-bottom: 2px;
-    border-radius: 10px;
-  }
+.searchGroup {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 90%;
+  margin-bottom: 2px;
+  border-radius: 10px;
+}
 
-  .searchGroup input {
-    border-radius: 5px;
-    height: 60%;
-    background-color: antiquewhite;
-  }
+.searchGroup input {
+  border-radius: 5px;
+  height: 60%;
+  background-color: antiquewhite;
+}
 
-  .searchGroup laber {
-    font-size: small;
-  }
+.searchGroup laber {
+  font-size: small;
+}
 
-  .resultContainer {
-    background-color: #5C3D2E;
-    border-radius: 10px;
-    border: 1px solid silver;
-    border-left:0 ;
-    width: 84%;
-    height: 89vh;
-    position: fixed;
-    top: 11vh;
-    right: 0;
-    display: flex;
-    flex-direction: row;
-    padding: 2px;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    justify-content: start;
-    overflow-y: scroll;
-  }
+.resultContainer {
+  background-color: #5c3d2e;
+  border-radius: 10px;
+  border: 1px solid silver;
+  border-left: 0;
+  width: 84%;
+  height: 89vh;
+  position: fixed;
+  top: 11vh;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  padding: 2px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  justify-content: start;
+  overflow-y: scroll;
+}
 
-  .options {
-    position: absolute;
-    right: 7%;
-    top: 120%;
-    height: 40vh;
-    width: 30%;
-    z-index: 1000;
-    border-radius: 10px;
-    border: 3px solid silver;
-    z-index: 1;
-    opacity: 1;
-    background-color: black;
-  }
+.searchAndCountryGroup {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
-  .invis {
-    display: none;
-  }
+.options {
+  position: absolute;
+  right: 7%;
+  top: 120%;
+  height: 40vh;
+  width: 30%;
+  z-index: 1000;
+  border-radius: 10px;
+  border: 3px solid silver;
+  z-index: 1;
+  opacity: 1;
+  background-color: black;
+}
 
-  .sliderGroup {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 25%;
-  }
-  
-  .sliderGroup div {
-    width: 50%;
-    margin-left: 15px;
-    display: flex;
-    flex-direction: row;
-  }
+.invis {
+  display: none;
+}
 
-  .sliderGroup div>input {
-      width: 50%;
-      margin-left: 5px;
-  }
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  height: 100%;
+}
 
-  .inputGroup.select.up {
-    height: 100%;
-    width: 25%;
-    margin: 0 5px 0 5px;
-  }
+.sliderGroup > div {
+  width: 100%;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: row;
+}
 
-  .inputGroup.select.up option {
-    width: 25%;
-  }
+.sliderGroup div > input {
+  width: 50%;
+  margin-left: 5px;
+}
+
+.inputGroup.select.up {
+  height: 100%;
+  width: 40%;
+  margin: 0 5px 0 5px;
+}
+
+.inputGroup.select.up option {
+  width: 25%;
+}
 
 .resultContainer .noItems {
   display: flex;
@@ -124,4 +132,50 @@
   align-self: center;
   margin-left: 32%;
   margin-right: auto;
+}
+
+@media only screen and (max-height: 960px) and (max-width: 800px) {
+  .resultContainer {
+    width: 68%;
+  }
+  .searchBar {
+    width: 68%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+
+  .searchAndCountryGroup {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60%;
+  }
+
+  .searchAndCountryGroup .searchGroup {
+    height: 45%;
+    width: 90%;
+  }
+  .searchAndCountryGroup .inputGroup.select.up {
+    height: 45%;
+    width: 90%;
+  }
+
+  .searchAndCountryGroup label {
+      height: 45%;
+      margin: 1px;
+      line-height: 45%;
+  }
+
+  .sliderGroup {
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .sliderGroup div {
+    width: 100%;
+  }
 }

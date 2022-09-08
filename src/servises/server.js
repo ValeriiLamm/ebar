@@ -42,7 +42,18 @@ async function searchForProducts (product) {
     }
 }
 
+async function getProductById (id) {
+    try {
+        const responce = await axios.get(baseUrl + id)
+        return responce
+    }
+    catch (err) {
+        return err
+    }
+}
+
 export {getAllProducts, 
         addNewProduct,
         getSearchData,
-        searchForProducts }
+        searchForProducts,
+        getProductById }

@@ -29,14 +29,14 @@ export default function CheckoutItem(props) {
     <div className='checkoutItem'>
         <ImageGroup imagesUrls={productItem.imagesUrls}/>
         <div className="details">
-          <p>Title: {productItem.title}</p>
-          <p>Brand: {productItem.brand}</p>
-          <p>Country: {productItem.country}</p>
+          <p>Title: <span>{productItem.title}</span></p>
+          <p>Brand: <span>{productItem.brand}</span></p>
+          <p>Country: <span>{productItem.country}</span></p>
         </div>
         <div className='details'>
-          <p>Item price: {productItem.price} ₪</p>
-          <p>Quantity: {product.quantity}</p>
-          <p>Total price: {product.product.price * product.quantity} ₪</p>
+          <p>Item price: <span>{productItem.price} ₪</span></p>
+          <p>Quantity: <span>{product.quantity}</span></p>
+          <p>Total price: <span>{product.product.price * product.quantity} ₪</span></p>
         </div>
         <div className='buttonContainer'>
           <button onClick={addItem}>Add</button>

@@ -6,7 +6,7 @@ import next from "../assets/icons/angle-right-solid.svg";
 import ImageGroup from "./ImageGroup";
 
 export default function ProductCard(props) {
-  const { product, searchProduct, setProduct, setCart, cart, setSpin } = props;
+  const { product, searchProduct, setProduct, setCart, cart, setSpin, setIndividualProduct } = props;
   const [green, setGreen] = useState(false)
   const [red, setRed] = useState(false)
   const [disabled, setDisabled] = useState(true)
@@ -93,7 +93,6 @@ export default function ProductCard(props) {
       <div className="bottomCard">
         <button onClick={addProduct} className={green ? "green" : ""}>Add to the cart</button>
         <button onClick={removeProduct} className={red ? "red" : ""} disabled={!cart.some(e => e.product._id === product._id)}>Remove</button>
-        <button>Details</button>
       </div>
     </div>
   );

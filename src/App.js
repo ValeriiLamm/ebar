@@ -10,6 +10,7 @@ import ErrorModal from './components/ErrorModal';
 import CartIcon from './components/CartIcon';
 import Checkout from './pages/Checkout';
 
+
 function App() {
   const [nav, setNav] = useState(false);
   const [toggle, setToggle] = useState(true);
@@ -37,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      {menuClicks.current && <Navbar nav={nav} setNav={setNav} clickRef={clickRef}/>}
+      {menuClicks.current && <Navbar cart={cart} nav={nav} setNav={setNav} clickRef={clickRef}/>}
       {!nav && <button className={showButton ? 'menuToggle slideOutToggle' : 'menuToggle slideInToggle' }  onClick={(e) => {
         setNav(e => !e);
         menuClicks.current = true;
