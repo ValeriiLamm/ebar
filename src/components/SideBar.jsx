@@ -1,10 +1,10 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import "../styles/SideBar.css";
 
 export default function SideBar(props) {
   const { tags, brands, setProduct, product } = props;
-  const [categories, setCategory] = useState([
+  const categories = [
     {
       primaryCategory: "Hard Liquor",
       secondaryCategory: [
@@ -49,7 +49,7 @@ export default function SideBar(props) {
         "Jiggers",
       ],
     },
-  ]);
+  ]
 
   return (
     <div className="sideBar">

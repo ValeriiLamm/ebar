@@ -5,7 +5,7 @@ import "../App.css"
 export default function LoadingIcon() {
   return (
     <div className='loadingContainer'>
-        <img src={spinner}/>
+        <img src={spinner} alt="spinner"/>
         <h3>Loading...</h3>
     </div>
   )

@@ -39,7 +39,7 @@ export default function CartIcon(props) {
             setErrorMessage('Need at least 1 item to proceed to checkout')
           }
         }} to={cart.length > 0 ? '/checkout' : '/search'}>
-<img src={picChange ? cartIcon : searchIcon}/>
+<img src={picChange ? cartIcon : searchIcon} alt='picture of a cart'/>
 {cart.length > 0 && <div className={spin ? "circleDiv spin" : "circleDiv"}>
             {quantity}
         </div>}

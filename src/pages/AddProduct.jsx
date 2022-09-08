@@ -1,11 +1,10 @@
 import { React, useState } from "react";
 import "../styles/AddProduct.css";
 import { addNewProduct } from "../servises/server";
-import { upload } from "@testing-library/user-event/dist/upload";
 
 export default function AddProduct(props) {
   const {setErrorMessage} = props
-  const [countryList, setCountryList] = useState([
+  const countryList = [
     "Afghanistan",
     "Albania",
     "Algeria",
@@ -254,8 +253,8 @@ export default function AddProduct(props) {
     "Zambia",
     "Zimbabwe",
     "Åland Islands",
-  ]);
-  const [categories, setCategory] = useState([
+  ]
+  const categories = [
     {
       primaryCategory: "Hard Liquor",
       secondaryCategory: [
@@ -300,8 +299,7 @@ export default function AddProduct(props) {
         "Strainers",
         "Jiggers",
       ],
-    },
-  ]);
+    },];
   const [selectedCategories, setSelectedCategory] = useState(false);
   const [secondaryCategory, setSecondaryCategory] = useState("")
   const [tags, setTags] = useState([""]);

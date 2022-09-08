@@ -20,18 +20,18 @@ export default function ImageGroup(props) {
       style={{ opacity: imagesUrls.length > 1 ? "1" : "0" }}
       onClick={() => changePicture(-1)}
     >
-      <img src={prev} />
+      <img src={prev} alt="prev"/>
     </button>
     <img
       className="productImage"
       src={imagesUrls[pictureIndex]}
-      alt="product picture"
+      alt="product"
     ></img>
     <button
       style={{ opacity: imagesUrls.length > 1 ? "1" : "0" }}
       onClick={() => changePicture(1)}
     >
-      <img src={next} />
+      <img src={next} alt="next" />
     </button>
   </div>
   )

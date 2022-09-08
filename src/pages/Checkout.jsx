@@ -26,7 +26,7 @@ export default function Checkout(props) {
       <div className="checkoutContainer">
         {cart.length === 0 && (
           <div className='noItems'>
-            <img src={xmark} />
+            <img src={xmark} alt="xmark"/>
             <p>There are no items to checkout</p>
           </div>
         )}
