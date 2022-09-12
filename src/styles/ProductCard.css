@@ -127,3 +127,7 @@ h4 {
 .red {
     animation: redShift 1s;
 }
+
+.cardDetails button {
+    margin: 2px;
+}

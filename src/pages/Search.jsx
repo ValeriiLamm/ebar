@@ -11,6 +11,7 @@ import LoadingIcon from '../components/LoadingIcon'
 
 
 export default function Search(props) {
+  const {setErrorMessage} = props
   const {
     // setErrorMessage, 
     setCart, cart, setSpin} = props
@@ -293,8 +294,13 @@ export default function Search(props) {
     (async () => {
       setLoading(true)
       const allProducts = await getAllProducts()
-      setProducts(allProducts.data.data)
-      setLoading(false)
+      if (allProducts.status !== 201) {
+        setErrorMessage('Server error, please try again later')
+      }
+      else {
+        setProducts(allProducts.data.data)
+      }
+        setLoading(false)
     })()
   }, [])
 

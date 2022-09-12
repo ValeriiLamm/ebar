@@ -50,7 +50,7 @@ function App() {
       {/* have to anaimate the toggle button */}
       {errorMessage && <ErrorModal errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>}
       <Routes>
-        <Route path='/search' element={<Search setSpin={setSpin} cart={cart} setCart={setCart}/>}></Route>
+        <Route path='/search' element={<Search setErrorMessage={setErrorMessage} setSpin={setSpin} cart={cart} setCart={setCart}/>}></Route>
         <Route path='/' element={<Homepage/>}></Route>
         <Route path='/add' element={<AddProduct setErrorMessage={setErrorMessage}/>}></Route>
         <Route path='/checkout' element={<Checkout setCart={setCart} cart={cart}/>}></Route>
