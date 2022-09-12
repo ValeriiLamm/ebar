@@ -1,14 +1,8 @@
 import axios from "axios"
 
-// const baseUrl = 'http://localhost:8080/'
-const baseUrl = 'https://salty-gorge-93628.herokuapp.com/'
+const baseUrl = 'http://localhost:8080/'
+// const baseUrl = 'https://salty-gorge-93628.herokuapp.com/'
 
-const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-  };
-  
 
 async function getAllProducts () {
     try {

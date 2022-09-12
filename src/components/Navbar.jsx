@@ -5,7 +5,7 @@ import '../styles/Navbar.css'
 
 export default function Navbar(props) {
     const {nav, clickRef,setNav, cart} = props
-    const navLinks = [{path: '/search', name: "Search"}, {path: '/add', name: "Add product"}, {path: '/', name: "Home"}];
+    const navLinks = [{path: '/search', name: "Search ingredients"}, {path: '/add', name: "Add product"}, {path: '/', name: "Home"}];
     
 
   return (
