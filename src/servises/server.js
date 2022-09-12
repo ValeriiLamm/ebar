@@ -1,15 +1,23 @@
 import axios from "axios"
 
 // const baseUrl = 'http://localhost:8080/'
-const baseUrl = 'https://sensational-arithmetic-a7b9ff.netlify.app/'
+const baseUrl = 'https://salty-gorge-93628.herokuapp.com/'
+
+const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  };
+  
 
 async function getAllProducts () {
     try {
         const responce = await axios.get(baseUrl + 'products/getAll', {
             headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-              }
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            }
         })
         return responce
     }
@@ -22,9 +30,10 @@ async function addNewProduct (product) {
     try {
         const responce = await axios.post(baseUrl + 'products/addProduct', product, {
             headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-              }
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            }
         })
         return responce
     }
@@ -37,9 +46,10 @@ async function getSearchData () {
     try {
         const responce = await axios.get(baseUrl + 'products/getSearchData', {
             headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-              }
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            }
         })
         return responce
     }
@@ -52,9 +62,10 @@ async function searchForProducts (product) {
     try {
         const responce = await axios.post(baseUrl + 'products/findProducts', product, {
             headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-              }
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            }
         })
         return responce
     }
@@ -67,9 +78,10 @@ async function getProductById (id) {
     try {
         const responce = await axios.get(baseUrl + id, {
             headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-              }
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            }
         })
         return responce
     }
