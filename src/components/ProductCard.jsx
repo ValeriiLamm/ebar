@@ -54,13 +54,13 @@ export default function ProductCard(props) {
           <div>
             <p>Category: {product.category.primaryCategory}</p>
             <p>Subcategory: {product.category.secondaryCategory}</p>
-            <p>Price: {product.price} ₪</p>
+            <p className="price">Price: {product.price} ₪</p>
           </div>
         </div>
       </div>
       <div className="cardDetails">
-        <p>Country: {product.country}</p>
-        <p>
+        <p className="country">Country: {product.country}</p>
+        <p className="productTags">
           Tags:{" "}
           {product.tags.map((e, i) => (
             <button

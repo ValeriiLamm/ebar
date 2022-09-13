@@ -255,6 +255,13 @@ export default function AddProduct(props) {
     "Åland Islands",
   ]
   const categories = [
+    {primaryCategory: "Bitters",
+    secondaryCategory: [
+      "Angostura bitters ",
+      "Peychaud's Bitters ",
+      "Becherovka",
+      "St. Vitus"
+    ]},
     {
       primaryCategory: "Hard Liquor",
       secondaryCategory: [

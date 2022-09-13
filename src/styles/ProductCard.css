@@ -14,8 +14,9 @@
 
 @media screen and (max-height: 960px) and (max-width: 800px){
     .productCard {
-        height: 30%;
+        height: 40%;
         margin-top: 10%;
+        margin-right: 15px;
     }
 
     .productCard .imageGroup {
@@ -24,6 +25,20 @@
 
     .productCard p {
         margin: 0;
+    }
+    .productTags {
+        width: 100%;
+        height: 25px;
+        display: flex;
+        flex-direction: row;
+        overflow-wrap: normal;
+    }
+    .country {
+        width: 100%;
+        margin-top: 3px;
+    }
+    .price {
+        width: 100%;
     }
 }
 
