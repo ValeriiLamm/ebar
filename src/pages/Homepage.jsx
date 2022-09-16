@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { searchForACocktail } from "../servises/server";
 import "../styles/Homepage.css";
 
 export default function Homepage(props) {
   const { setErrorMessage } = props;
   const [ingredients, setIngredients] = useState([""]);
-  const [tags, setTags] = useState([""])
+  const [tags, setTags] = useState([""]);
+  const [title, setTitle] = useState('')
+  const [cocktailList, setCocktailList] = useState([])
 
   const handleNewIngredients = (value, index) => {
     setIngredients((prev) => [
@@ -37,23 +40,21 @@ export default function Homepage(props) {
 
   const addNewTag = (e, index) => {
     e.preventDefault();
-	if (tags.length < 5) {
-		setTags((prev) => [
-			...prev.slice(0, index),
-			(prev[index] = ""),
-			...prev.slice(index + 1),
-		  ]);
-	}
-	else setErrorMessage('No more then 5 tags')
+    if (tags.length < 5) {
+      setTags((prev) => [
+        ...prev.slice(0, index),
+        (prev[index] = ""),
+        ...prev.slice(index + 1),
+      ]);
+    } else setErrorMessage("No more then 5 tags");
   };
 
   const removeTheTag = (e, index) => {
-    e.preventDefault()
+    e.preventDefault();
     if (tags.length > 1) {
-      setTags(prev => [...prev.slice(0,index), ...prev.slice(index + 1)])
-    }
-    else setErrorMessage('Need at least one tag')
-  }
+      setTags((prev) => [...prev.slice(0, index), ...prev.slice(index + 1)]);
+    } else setErrorMessage("Need at least one tag");
+  };
 
   const handleNewTag = (value, index) => {
     setTags((prev) => [
@@ -63,11 +64,27 @@ export default function Homepage(props) {
     ]);
   };
 
+  async function searchForaCocktails () {
+    try {
+        const cocktailList = await searchForACocktail({
+          name: title,
+          tags: tags,
+          ingredients: ingredients
+        })
+        console.log(cocktailList.data.data)
+        setCocktailList(cocktailList.data.data)
+    }
+    catch (err) {
+      console.log(err)
+      setErrorMessage(err.data.message)
+    }
+  }
+
   return (
     <div className="homepage">
       <h3>What are you having today?</h3>
       <div className="search">
-      <h4>What ingredients do you have?</h4>
+        <h4>What ingredients do you have?</h4>
         <div className="ingredients">
           {ingredients.map((e, i) => (
             <div>
@@ -93,17 +110,24 @@ export default function Homepage(props) {
         </div>
         <h4>What kind of drink would you like?</h4>
         <div className="cocktailTags">
-        {tags.map((e, i) => (
+          {tags.map((e, i) => (
             <div key={i}>
               <input
                 type="text"
                 onChange={(e) => handleNewTag(e.target.value, i)}
               />
-              {tags.length > 1 && (!(i === tags.length - 1) && <button onClick={(e) => removeTheTag(e,i)}>Remove</button>)}
-              {tags.length < 5 && (i === tags.length - 1 && <button onClick={(e) => addNewTag(e, i + 1)}>Add tag</button>)}
+              {tags.length > 1 && !(i === tags.length - 1) && (
+                <button onClick={(e) => removeTheTag(e, i)}>Remove</button>
+              )}
+              {tags.length < 5 && i === tags.length - 1 && (
+                <button onClick={(e) => addNewTag(e, i + 1)}>Add tag</button>
+              )}
             </div>
           ))}
         </div>
+        <h4>Looking for a specific cocktail? Type the name!</h4>
+        <input className="name" type="text" onChange={(e) => setTitle(e.target.value)} value={title}/>
+        <button className="searchButton" onClick={searchForaCocktails}>Search</button>
       </div>
     </div>
   );

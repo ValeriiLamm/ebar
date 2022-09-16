@@ -68,7 +68,7 @@ async function searchForProducts (product) {
     }
 }
 
-async function searchForACoctail (cocktail) {
+async function searchForACocktail (cocktail) {
     try {
         const responce = await axios.post(baseUrl + 'cocktails/getCocktail', cocktail, {
             headers: {
@@ -104,4 +104,5 @@ export {getAllProducts,
         addNewProduct,
         getSearchData,
         searchForProducts,
-        getProductById }
+        getProductById,
+        searchForACocktail }
