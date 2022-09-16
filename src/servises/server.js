@@ -1,7 +1,7 @@
 import axios from "axios"
 
-// const baseUrl = 'http://localhost:8080/'
-const baseUrl = 'https://salty-gorge-93628.herokuapp.com/'
+const baseUrl = 'http://localhost:8080/'
+// const baseUrl = 'https://salty-gorge-93628.herokuapp.com/'
 
 
 async function getAllProducts () {
@@ -55,6 +55,22 @@ async function getSearchData () {
 async function searchForProducts (product) {
     try {
         const responce = await axios.post(baseUrl + 'products/findProducts', product, {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            }
+        })
+        return responce
+    }
+    catch (err) {
+        return err
+    }
+}
+
+async function searchForACoctail (cocktail) {
+    try {
+        const responce = await axios.post(baseUrl + 'cocktails/getCocktail', cocktail, {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "Content-Type",

@@ -4,6 +4,13 @@ import "../styles/SideBar.css";
 export default function SideBar(props) {
   const { tags, brands, setProduct, product } = props;
   const categories = [
+    {primaryCategory: "Bitters",
+    secondaryCategory: [
+      "Angostura bitters ",
+      "Peychaud's Bitters ",
+      "Becherovka",
+      "St. Vitus"
+    ]},
     {
       primaryCategory: "Hard Liquor",
       secondaryCategory: [

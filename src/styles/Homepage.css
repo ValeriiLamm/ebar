@@ -1,6 +1,80 @@
 .homepage {
-    height: 100vh;
-    color: #CCCC00;
-  }
+  height: 100vh;
+  width: 100vw;
+  color: #cccc00;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  
+h3,
+h4 {
+  color: white;
+}
+
+h4 {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.search {
+  background-color: #5c3d2e;
+  width: 50vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.ingredients,
+.cocktailTags {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px;
+}
+
+.ingredients div,
+.cocktailTags div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 18%;
+  height: 50%;
+  margin: 5px;
+}
+
+.ingredients input,
+.cocktailTags input {
+  width: 100%;
+  height: 35%;
+}
+
+.ingredients button,
+.cocktailTags button {
+  height: 45%;
+  width: 105%;
+}
+
+.search > div {
+  height: 30%;
+}
+
+.ingredients div:hover > button,
+.cocktailTags div:hover > button,
+.ingredients div:only-child > button,
+.cocktailTags div:only-child > button {
+  opacity: 1;
+}
+
+.ingredients div > button,
+.cocktailTags div > button {
+  opacity: 0;
+}
+
+.ingredients div > button:disabled,
+.cocktailTags div> button:disabled {
+  opacity: 0;
+}
