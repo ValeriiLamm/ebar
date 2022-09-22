@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import CocktailItem from "../components/CocktailItem";
+import LoadingIcon from "../components/LoadingIcon";
 import { searchForACocktail } from "../servises/server";
 import "../styles/Homepage.css";
 
@@ -6,8 +8,9 @@ export default function Homepage(props) {
   const { setErrorMessage } = props;
   const [ingredients, setIngredients] = useState([""]);
   const [tags, setTags] = useState([""]);
-  const [title, setTitle] = useState('')
-  const [cocktailList, setCocktailList] = useState([])
+  const [title, setTitle] = useState("");
+  const [cocktailList, setCocktailList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleNewIngredients = (value, index) => {
     setIngredients((prev) => [
@@ -64,19 +67,19 @@ export default function Homepage(props) {
     ]);
   };
 
-  async function searchForaCocktails () {
+  async function searchForaCocktails() {
     try {
-        const cocktailList = await searchForACocktail({
-          name: title,
-          tags: tags,
-          ingredients: ingredients
-        })
-        console.log(cocktailList.data.data)
-        setCocktailList(cocktailList.data.data)
-    }
-    catch (err) {
-      console.log(err)
-      setErrorMessage(err.data.message)
+      setLoading(true);
+      const cocktailList = await searchForACocktail({
+        name: title,
+        tags: tags,
+        ingredients: ingredients,
+      });
+      setLoading(false);
+      setCocktailList(cocktailList.data.data);
+    } catch (err) {
+      console.log(err);
+      setErrorMessage(err.data.message);
     }
   }
 
@@ -84,50 +87,75 @@ export default function Homepage(props) {
     <div className="homepage">
       <h3>What are you having today?</h3>
       <div className="search">
-        <h4>What ingredients do you have?</h4>
-        <div className="ingredients">
-          {ingredients.map((e, i) => (
-            <div>
-              <input
-                onChange={(event) =>
-                  handleNewIngredients(event.target.value, i)
-                }
-                type="text"
-                value={ingredients[i]}
-              />
-              {ingredients.length > 1 && !(i === ingredients.length - 1) && (
-                <button onClick={(event) => removeTheIngredient(event, i)}>
-                  Remove
-                </button>
-              )}
-              {ingredients.length < 5 && i === ingredients.length - 1 && (
-                <button onClick={(event) => addNewIngredients(event, i + 1)}>
-                  Add
-                </button>
-              )}
-            </div>
+        {loading && <LoadingIcon />}
+        {cocktailList.length > 0 && <h4>Suggestions:</h4>}
+        {cocktailList.length > 0 && <div className="cocktailContainer">
+          {cocktailList.map((e) => (
+            <CocktailItem cocktail={e}/>
           ))}
-        </div>
-        <h4>What kind of drink would you like?</h4>
-        <div className="cocktailTags">
-          {tags.map((e, i) => (
-            <div key={i}>
-              <input
-                type="text"
-                onChange={(e) => handleNewTag(e.target.value, i)}
-              />
-              {tags.length > 1 && !(i === tags.length - 1) && (
-                <button onClick={(e) => removeTheTag(e, i)}>Remove</button>
-              )}
-              {tags.length < 5 && i === tags.length - 1 && (
-                <button onClick={(e) => addNewTag(e, i + 1)}>Add tag</button>
-              )}
+          </div>}
+        {cocktailList.length < 1 && !loading && (
+          <>
+            <h4>What ingredients do you have?</h4>
+            <div className="ingredients">
+              {ingredients.map((e, i) => (
+                <div>
+                  <input
+                    onChange={(event) =>
+                      handleNewIngredients(event.target.value, i)
+                    }
+                    type="text"
+                    value={ingredients[i]}
+                  />
+                  {ingredients.length > 1 &&
+                    !(i === ingredients.length - 1) && (
+                      <button
+                        onClick={(event) => removeTheIngredient(event, i)}
+                      >
+                        Remove
+                      </button>
+                    )}
+                  {ingredients.length < 5 && i === ingredients.length - 1 && (
+                    <button
+                      onClick={(event) => addNewIngredients(event, i + 1)}
+                    >
+                      Add
+                    </button>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <h4>Looking for a specific cocktail? Type the name!</h4>
-        <input className="name" type="text" onChange={(e) => setTitle(e.target.value)} value={title}/>
-        <button className="searchButton" onClick={searchForaCocktails}>Search</button>
+            <h4>What kind of drink would you like?</h4>
+            <div className="cocktailTags">
+              {tags.map((e, i) => (
+                <div key={i}>
+                  <input
+                    type="text"
+                    onChange={(e) => handleNewTag(e.target.value, i)}
+                  />
+                  {tags.length > 1 && !(i === tags.length - 1) && (
+                    <button onClick={(e) => removeTheTag(e, i)}>Remove</button>
+                  )}
+                  {tags.length < 5 && i === tags.length - 1 && (
+                    <button onClick={(e) => addNewTag(e, i + 1)}>
+                      Add tag
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+            <h4>Looking for a specific cocktail? Type the name!</h4>
+            <input
+              className="name"
+              type="text"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+            />
+            <button className="searchButton" onClick={searchForaCocktails}>
+              Search
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

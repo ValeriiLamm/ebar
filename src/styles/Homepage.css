@@ -95,3 +95,17 @@ button {
   align-self: center;
   margin-top: 20px
 }
+
+.cocktailContainer {
+  background-color: #9c5e3e;
+  border-radius: 10px;
+  width: 90%;
+  flex-basis: 80%;
+  align-self: center;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 5px;
+  overflow-y: scroll;
+}

@@ -1,0 +1,54 @@
+.checkList {
+    z-index: 997;
+    position: fixed;
+    top: 0px;
+    left: 135px;
+    color: white;
+    background-color: transparent;
+}
+
+.checklistForm {
+    width: 10vw;
+    padding: 2px;
+}
+
+.checklistForm > div {
+    height: 6vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.checklistForm > div label {
+    width: 80%;
+}
+
+.checkList img {
+    width: 35px;
+    height: 35px;
+    filter: invert(100%);
+}
+
+.checkList button {
+    justify-self: flex-end;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+
+.checkList:hover .checklistForm > div button {
+    opacity: 1;
+}
+
+.checkList button img {
+    width: 8px;
+    height: 8px;
+    filter: none;
+
+}
