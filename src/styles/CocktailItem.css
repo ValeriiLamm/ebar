@@ -3,17 +3,22 @@
     flex-direction: column;
     background-color: #492d20;
     width: 15vw;
-    height: 96%;
     padding: 2px;
     color: white;
     font-size: 14px;
     margin: 0 5px 0 5px;
     border-radius: 5px;
+    margin: 1%;
+}
+
+.cocktailItem .imageGroup {
+    margin-top: 5px;
+    justify-content: center;
 }
 
 .cocktailTitle {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .cocktailIngredients {
@@ -27,4 +32,8 @@
 
 .cocktailIngredients li {
     text-align: start;
+}
+
+a {
+    color: white;
 }

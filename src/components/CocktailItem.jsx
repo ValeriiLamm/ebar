@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import "../styles/CocktailItem.css"
 import ImageGroup from './ImageGroup'
 
@@ -9,14 +10,8 @@ export default function (props) {
     <div className='cocktailItem'>
         <div className='cocktailTitle'>
         <ImageGroup imagesUrls={[cocktail.illustrationUrl]}/>
-        <h4>{cocktail.name}</h4>
+        <h4><NavLink to={`/cocktails/${cocktail._id}`} target="_blank">{cocktail.name}</NavLink></h4>
         </div>
-        <ul className='cocktailIngredients'>
-        {cocktail.ingredients.map((e,i) => (
-            <span><li>{cocktail.ammount[i]} of {e}</li><button>Add to checklist</button></span>
-        ))}
-        </ul>
-        <p>{cocktail.recipe}</p>
     </div>
   )
 }

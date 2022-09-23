@@ -100,9 +100,26 @@ async function getProductById (id) {
     }
 }
 
+async function getCocktailById (id) {
+    try {
+        const responce = await axios.get(baseUrl + "cocktails/" + id, {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            }
+        })
+        return responce
+    }
+    catch (err) {
+        return err
+    }
+}
+
 export {getAllProducts, 
         addNewProduct,
         getSearchData,
         searchForProducts,
         getProductById,
-        searchForACocktail }
+        searchForACocktail,
+        getCocktailById }

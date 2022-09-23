@@ -5,7 +5,11 @@ import '../styles/Navbar.css'
 
 export default function Navbar(props) {
     const {nav, clickRef,setNav, cart} = props
-    const navLinks = [{path: '/search', name: "Store"}, {path: '/add', name: "Add product"}, {path: '/', name: "Home"}];
+    const navLinks = [{path: '/search', name: "Store"}, 
+    // {path: '/addProduct', name: "Add product"}
+    , {path: '/', name: "Home"},
+    //  {path: '/addCocktail', name: "Add a new cocktail"}
+    ];
     
 
   return (

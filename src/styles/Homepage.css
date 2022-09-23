@@ -107,5 +107,10 @@ button {
   flex-direction: row;
   align-items: flex-start;
   padding: 5px;
+  flex-wrap: wrap;
   overflow-y: scroll;
+}
+
+.search .loadingContainer {
+  margin-top: 15%;
 }

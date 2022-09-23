@@ -76,6 +76,9 @@ export default function Homepage(props) {
         ingredients: ingredients,
       });
       setLoading(false);
+      if (cocktailList.data.data.length === 0) {
+        setErrorMessage('No cocktails were found')
+      }
       setCocktailList(cocktailList.data.data);
     } catch (err) {
       console.log(err);
@@ -87,7 +90,7 @@ export default function Homepage(props) {
     <div className="homepage">
       <h3>What are you having today?</h3>
       <div className="search">
-        {loading && <LoadingIcon />}
+        {loading && <LoadingIcon/>}
         {cocktailList.length > 0 && <h4>Suggestions:</h4>}
         {cocktailList.length > 0 && <div className="cocktailContainer">
           {cocktailList.map((e) => (
@@ -156,6 +159,7 @@ export default function Homepage(props) {
             </button>
           </>
         )}
+        {cocktailList.length > 0 && <button onClick={(e) => setCocktailList([])} className="searchButton">Another search</button>}
       </div>
     </div>
   );

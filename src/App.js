@@ -11,6 +11,7 @@ import CartIcon from './components/CartIcon';
 import Checkout from './pages/Checkout';
 import AddCocktail from './pages/AddCocktail';
 import CheckList from './components/CheckList';
+import CocktailDetails from './pages/CocktailDetails';
 
 
 function App() {
@@ -22,11 +23,8 @@ function App() {
   const [errorMessage, setErrorMessage ] = useState('')
   const [cart, setCart] = useState([])
   const [spin, setSpin] = useState(false)
-  const [wishList, setWishList] = useState([
-    "Vodka",
-    "Coffee Liquor",
-    "Light cream"
-  ])
+  const [wishList, setWishList] = useState([])
+
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -54,14 +52,15 @@ function App() {
       }}>
         <img src={menu} alt='menu'/></button>}
         <CartIcon setErrorMessage={setErrorMessage} spin={spin} cart={cart}/>
-        {wishList && <CheckList wishList={wishList} cart={cart}/>}
+        {wishList.length > 0 && <CheckList setWishList={setWishList} wishList={wishList} cart={cart}/>}
       {/* have to anaimate the toggle button */}
       {errorMessage && <ErrorModal errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>}
       <Routes>
         <Route path='/search' element={<Search setErrorMessage={setErrorMessage} setSpin={setSpin} cart={cart} setCart={setCart}/>}></Route>
         <Route path='/' element={<Homepage setErrorMessage={setErrorMessage}/>}></Route>
-        <Route path='/addProduct' element={<AddProduct setErrorMessage={setErrorMessage}/>}></Route>
+        {/* <Route path='/addProduct' element={<AddProduct setErrorMessage={setErrorMessage}/>}></Route> */}
         <Route path='/checkout' element={<Checkout setCart={setCart} cart={cart}/>}></Route>
+        <Route path='/cocktails/:_id' element={<CocktailDetails setWishList={setWishList}/>}></Route>
       </Routes>
       </BrowserRouter>
     </div>

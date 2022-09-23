@@ -8,7 +8,7 @@ import '../styles/CheckList.css'
 export default function CheckList(props) {
     const [show,setShow] = useState(false)
     const [wishListString, setWishListString] = useState('')
-    const {cart, wishList} = props
+    const {cart, wishList,setWishList} = props
     
     useEffect(() => {
         const string = checkCart()
@@ -28,6 +28,11 @@ export default function CheckList(props) {
         return allItems
     }
 
+    function removeItem (item) {
+              const newList = wishList.filter((e) => e !== item)
+              setWishList(newList)
+    }
+
   return (
     <div className='checkList'>
         <img src={list} alt="checklist" onClick={(e) => setShow(prev => !prev)}/>
@@ -36,7 +41,7 @@ export default function CheckList(props) {
                 <div key={e} className='checkItem'>
                     <label for={e}>{e}</label>
                     <input checked={wishListString.includes(e.toLowerCase().replace(/\s/g, ''))} name={e} id={e} type="radio"/>
-                    <button><img src={minus} alt="minus"/></button>
+                    <button onClick={() => removeItem(e)}><img src={minus} alt="minus"/></button>
                 </div>
             ))}
         </form>}
