@@ -89,3 +89,9 @@
 h5 {
     margin-top: 0;
 }
+
+.suggestions h4 {
+    align-self: center;
+    width: 20%;
+    margin-left: 40%;
+}
