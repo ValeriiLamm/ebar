@@ -62,6 +62,7 @@ export default function (props) {
         </div>}
         <h4>Simmilar cocktails</h4>
         <div className='suggestions'>
+        {suggestions.length === 0 && <h4>This one im unique</h4>}
         {suggestions.map((e) => (
             <CocktailItem cocktail={e}/>
           ))}  
