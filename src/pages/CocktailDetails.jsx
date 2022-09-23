@@ -13,12 +13,13 @@ export default function (props) {
     const [cocktail, setCocktail] = useState()
     const [suggestions, setSuggestions]= useState([])
     const [loading, setLoading] = useState(false)
+    const [loading2, setLoading2] = useState(false)
 
     async function searchForaCocktails() {
       try {
         setLoading(true);
         const cocktailList = await searchForACocktail({
-          tags: cocktail.tags,
+          // tags: cocktail.tags,
           ingredients: cocktail.ingredients
         });
         setLoading(false);
@@ -40,7 +41,11 @@ export default function (props) {
   }, [])
 
   useEffect(() => {
-    searchForaCocktails()
+    (async () => {
+      setLoading2(true)
+      const suggestions = await searchForaCocktails()
+      setLoading2(false)
+    })()
   }, [cocktail])
 
   return (
@@ -63,6 +68,7 @@ export default function (props) {
         <h4>Simmilar cocktails</h4>
         <div className='suggestions'>
         {suggestions.length === 0 && <h4>This one is unique</h4>}
+        {loading2 && <LoadingIcon/>}
         {suggestions.map((e) => (
             <CocktailItem cocktail={e}/>
           ))}  
