@@ -102,6 +102,10 @@ h5 {
     .suggestions {
         height: 20%;
     }
+
+    .suggestions .cocktailItem {
+        height: 98%;
+    }    
     .cocktailDetails {
         height: 75%;
         width: 100%;
