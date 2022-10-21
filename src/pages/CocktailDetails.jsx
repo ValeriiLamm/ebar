@@ -67,7 +67,7 @@ export default function (props) {
         </div>}
         <h4>Simmilar cocktails</h4>
         <div className='suggestions'>
-        {suggestions.length === 0 && <h4>This one is unique</h4>}
+        {suggestions.length === 0 && !loading && <h4>This one is unique</h4>}
         {loading2 && <LoadingIcon/>}
         {suggestions.map((e) => (
             <CocktailItem cocktail={e}/>
