@@ -11,6 +11,7 @@ export default function Homepage(props) {
   const [title, setTitle] = useState("");
   const [cocktailList, setCocktailList] = useState([]);
   const [loading, setLoading] = useState(false);
+  
 
   const handleNewIngredients = (value, index) => {
     setIngredients((prev) => [
@@ -111,9 +112,10 @@ export default function Homepage(props) {
                     value={ingredients[i]}
                   />
                   {ingredients.length > 1 &&
-                    !(i === ingredients.length - 1) && (
+                    (!(i === ingredients.length - 1) || i === 4) && (
                       <button
                         onClick={(event) => removeTheIngredient(event, i)}
+                        className="removeButton"
                       >
                         Remove
                       </button>
@@ -136,7 +138,7 @@ export default function Homepage(props) {
                     type="text"
                     onChange={(e) => handleNewTag(e.target.value, i)}
                   />
-                  {tags.length > 1 && !(i === tags.length - 1) && (
+                  {tags.length > 1 && (!(i === tags.length - 1) || i === 4) && (
                     <button onClick={(e) => removeTheTag(e, i)}>Remove</button>
                   )}
                   {tags.length < 5 && i === tags.length - 1 && (
