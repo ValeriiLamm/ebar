@@ -1,10 +1,10 @@
 @keyframes slideOut {
     0% {width: 0vw; }
-    100% {width: 17vw;}
+    100% {width: 13vw;}
 }
 
 @keyframes slideIn {
-    0% {width: 17vw; }
+    0% {width: 13vw; }
     100% {width: 0vw;}
 }
 
@@ -29,7 +29,7 @@
     flex-direction: column;
     align-items: baseline;
     width: 20vw;
-    height: 100wh;
+    height: 100vh;
     padding: 0;
     margin: 0;
     /* background-color: rgba(174, 168, 159, 0.818); */

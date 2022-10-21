@@ -154,3 +154,19 @@ button:hover {
   opacity: 0.8;
   border-radius: 50%;
 }
+
+@media only screen and (max-height: 960px) and (max-width: 800px) {
+  .errorModal {
+    width: 50%;
+    left: 20%;
+    height: 15%;
+  }
+  .errorModal p {
+    width: 90%;
+    height: 60%;
+    margin-bottom: 5%;
+  }
+  .errorModal button {
+    width: 20%;
+  }
+}

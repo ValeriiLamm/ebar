@@ -61,6 +61,7 @@ function App() {
         {/* <Route path='/addProduct' element={<AddProduct setErrorMessage={setErrorMessage}/>}></Route> */}
         <Route path='/checkout' element={<Checkout setCart={setCart} cart={cart}/>}></Route>
         <Route path='/cocktails/:_id' element={<CocktailDetails setWishList={setWishList}/>}></Route>
+        <Route path='/addCocktail' element={<AddCocktail setErrorMessage={setErrorMessage}/>}></Route>
       </Routes>
       </BrowserRouter>
     </div>
