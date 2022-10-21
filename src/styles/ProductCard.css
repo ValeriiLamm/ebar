@@ -150,6 +150,10 @@ h4 {
         width: 100%;
     }
 
+    .productImage {
+        width: 60px;
+      }
+
     .cardDetails {
         justify-content: space-around;
         height: 35%;
