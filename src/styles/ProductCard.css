@@ -11,6 +11,10 @@
     background-color: #2D2424;
 }
 
+.productCard:last-child {
+    margin-bottom: 5%;
+}
+
 h4 {
     text-align: center;
 }
