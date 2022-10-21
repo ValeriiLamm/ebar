@@ -101,6 +101,7 @@ h5 {
 @media screen and (max-height: 960px) and (max-width: 800px){ 
     .suggestions {
         height: 20%;
+        overflow-y: hidden;
     }
 
     .suggestions .cocktailItem {

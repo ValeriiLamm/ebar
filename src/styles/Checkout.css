@@ -95,7 +95,7 @@
 }
 
 @media only screen and (max-height: 960px) and (max-width: 800px) { 
-    p {
+    .checkoutPage p {
         margin: 0;
         width: 33%;
         display: flex;

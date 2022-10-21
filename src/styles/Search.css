@@ -147,6 +147,14 @@ input {
     justify-content: flex-start;
   }
 
+  .resultContainer .noItems {
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .noItems p {
+    width: 90%;
+  }
 
   .searchAndCountryGroup {
     display: flex;
