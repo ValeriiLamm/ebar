@@ -38,8 +38,8 @@
 
 .cocktailDetails {
     background-color: #5c3d2e;
-    height: 60%;
-    width: 100%;
+    height: 65%;
+    width: 101%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -51,13 +51,13 @@
 
 .suggestions {
     background-color: #9c5e3e;
-    height: 35%;
-    width: 100%;
+    height: 30%;
+    width: 100vw;
     border-radius: 10px;
     margin-bottom: 1%;
     display: flex;
     flex-direction: row;
-    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 .cocktailDetailsContainer ul {
@@ -127,4 +127,43 @@ h5 {
     .cocktailHeader div:nth-child(2) {
         width: 100%;
     }
+    .cocktailDetails img {
+        width: 200px;
+        height: 200px;
+    }
+    .cocktailDetails p {
+        font-size: small;
+    }
 }
+
+@media screen and (orientation:landscape) and (max-height: 376px) {
+    .cocktailDetails .cocktailHeader .imageGroup img {
+        height: 120px;
+        width: 120px;
+    }
+    .suggestions img {
+        height: 70px;
+        width: 60px;
+    }
+    .cocktailDetails {
+        flex-direction: row;
+    }
+    .cocktailHeader {
+        justify-content: flex-start;
+        width: 65%;
+    }
+
+    .cocktailDetailsContainer {
+        justify-content: flex-start;
+    }
+  .cocktailDetails p {
+        width: 35%;
+        font-size: small;
+    }
+    .cocktailHeader div:nth-child(2) {
+        width: 55%;
+    }
+    .cocktailHeader ul {
+        padding: 0;
+    }
+  }

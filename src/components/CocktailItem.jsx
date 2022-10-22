@@ -8,10 +8,12 @@ export default function (props) {
   
   return (
     <div className='cocktailItem'>
+      <NavLink to={`/cocktails/${cocktail._id}`} target="_blank">
         <div className='cocktailTitle'>
         <ImageGroup imagesUrls={[cocktail.illustrationUrl]}/>
-        <h4><NavLink to={`/cocktails/${cocktail._id}`} target="_blank">{cocktail.name}</NavLink></h4>
+        <h4>{cocktail.name}</h4>
         </div>
+        </NavLink>
     </div>
   )
 }

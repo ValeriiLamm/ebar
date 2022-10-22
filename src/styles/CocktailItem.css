@@ -6,9 +6,12 @@
     padding: 2px;
     color: white;
     font-size: 14px;
-    margin: 0 5px 0 5px;
     border-radius: 5px;
-    margin: 1%;
+    margin: 1% auto;
+}
+
+.suggestions .cocktailItem {
+    margin: 0.5%
 }
 
 .cocktailItem .imageGroup {

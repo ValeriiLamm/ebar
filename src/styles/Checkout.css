@@ -135,3 +135,12 @@
         margin-top: 10px;
     }
 }
+
+@media screen and (orientation:landscape) and (max-height: 376px) {
+    .buttonContainer button {
+        width: 33%;
+    }
+    .checkoutBottom {
+        height: 9vh;
+    }
+  }
