@@ -142,9 +142,14 @@ input {
   }
   .searchBar {
     width: 68%;
+    height: 12vh;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+  }
+
+  .resultContainer {
+    top: 13vh
   }
 
   .resultContainer .noItems {
@@ -189,3 +194,27 @@ input {
     width: 100%;
   }
 }
+
+@media screen and (orientation:landscape) and (max-height: 376px) {
+  .searchBar {
+    height: 14vh;
+  }
+  .resultContainer {
+    top: 15vh;
+  }
+
+  .sliderGroup div > input {
+    width: 40%;
+  }
+  .sliderGroup {
+    width: 30%;
+    height: 110%;
+  }
+  .sliderGroup > div {
+    margin-left: 0;
+  }
+  .searchGroup {
+    width: 70%;
+  }
+}
+

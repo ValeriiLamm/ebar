@@ -19,7 +19,7 @@ export default function Search(props) {
   const [loading, setLoading] = useState(false)
   const [tags, setTags] = useState([])
   const [brands, setBrands] = useState([])
-  const [priceArr, setPriceArr] = useState([0,1000])
+  const [priceArr, setPriceArr] = useState([0,100])
   const [product, setProduct] = useState({
     tags: [],
     brand: '',
