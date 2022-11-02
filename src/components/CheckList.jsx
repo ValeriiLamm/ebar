@@ -3,12 +3,16 @@ import {React, useState} from 'react'
 import list from "../assets/icons/list-check-solid.svg"
 import minus from "../assets/icons/minus-solid.svg"
 import '../styles/CheckList.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { listActions } from '../store/slices/listSlice'
 
 
 export default function CheckList(props) {
     const [show,setShow] = useState(false)
+    const wishList = useSelector(state => state.checklist.value)
+    const dispatch = useDispatch()
     const [wishListString, setWishListString] = useState('')
-    const {cart, wishList,setWishList} = props
+    const cart = useSelector(state => state.cart.cart)
     
     useEffect(() => {
         const string = checkCart()
@@ -29,8 +33,7 @@ export default function CheckList(props) {
     }
 
     function removeItem (item) {
-              const newList = wishList.filter((e) => e !== item)
-              setWishList(newList)
+              dispatch(listActions.removeFromWishList(item))
     }
 
   return (

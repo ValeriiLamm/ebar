@@ -3,10 +3,12 @@ import { Navigate } from 'react-router-dom'
 import CheckoutItem from '../components/CheckoutItem'
 import '../styles/Checkout.css'
 import xmark from '../assets/icons/xmark-solid.svg'
+import { useSelector } from 'react-redux'
 
 export default function Checkout(props) {
-  const {setCart, cart} = props
+  const cart = useSelector(state => state.cart.cart)
   const [totalPrice, setTotalPrice] = useState(0)
+  console.log(cart)
   
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export default function Checkout(props) {
           </div>
         )}
         {cart.map((e, i) => (
-          <CheckoutItem index={i} cart={cart} setCart={setCart} product={e} />
+          <CheckoutItem index={i} product={e} />
         ))}
       </div>
       <div className="checkoutBottom">

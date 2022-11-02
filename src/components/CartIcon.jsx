@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector} from 'react-redux';
+import { errorActions } from '../store/slices/errorSlice';
+import React from 'react'
 import {NavLink} from 'react-router-dom'
 import '../App.css';
 import cartIcon from '../assets/icons/cart-shopping-solid.svg'
 import searchIcon from '../assets/icons/magnifying-glass-solid.svg'
 
 export default function CartIcon(props) {
-    const {cart, spin, setErrorMessage} = props
+    const {spin} = props
+    const dispatch = useDispatch()
+    const cart = useSelector(state => state.cart.cart)
     const [quantity, setQuantity] = useState(0)
     const [picChange, setPicChange] = useState(true)
     const [pageChange, setPageChange] = useState(true)
@@ -36,7 +41,7 @@ export default function CartIcon(props) {
         <NavLink onClick={() => {
           setPageChange(prev => !prev)
           if (cart.length < 1 && window.location.pathname === "/search") {
-            setErrorMessage('Need at least 1 item to proceed to checkout')
+            dispatch(errorActions.setError('Need at least 1 item to proceed to checkout'))
           }
         }} to={cart.length > 0 ? '/checkout' : '/search'}>
 <img src={picChange ? cartIcon : searchIcon} alt='cart'/>

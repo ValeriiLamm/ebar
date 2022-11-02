@@ -2,26 +2,22 @@ import {React, useRef} from "react";
 import "../styles/ProductCard.css";
 import { useState } from "react";
 import ImageGroup from "./ImageGroup";
+import { useDispatch,useSelector } from "react-redux";
+import { cartActions } from "../store/slices/cartSlice";
 
 export default function ProductCard(props) {
-  const { product, searchProduct, setProduct, setCart, cart, setSpin} = props;
+  const { product, searchProduct, setProduct, setSpin} = props;
   const [green, setGreen] = useState(false)
   const [red, setRed] = useState(false)
   const quantityRef = useRef(0)
+  const dispatch = useDispatch()
+  const cart = useSelector(state => state.cart.cart)
 
   function addProduct () {
     setGreen(true)
     setSpin(true)
     quantityRef.current = quantityRef.current + 1
-    if (cart.some((element) => element.product._id === product._id)) {
-      let newCart = cart.filter(element => element.product._id !== product._id)
-      newCart = [...newCart, {product: product, quantity: quantityRef.current}]
-      setCart(newCart)
-    }
-    else {
-      setCart(cart.concat([{product: product, quantity: quantityRef.current}]))
-
-  }
+    dispatch(cartActions.addProduct({product,quantity: quantityRef.current}))
     setTimeout(() => setGreen(false), 1000)
     setTimeout(() => setSpin(false), 500)
   }
@@ -32,15 +28,7 @@ export default function ProductCard(props) {
     if (quantityRef.current > 0) {
       quantityRef.current = quantityRef.current - 1
     }
-    if (quantityRef.current > 0) {
-      let newCart = cart.filter(element => element.product._id !== product._id)
-      newCart = [...newCart, {product: product, quantity: quantityRef.current}]
-      setCart(newCart)
-    }
-    else {
-      let newCart = cart.filter(element => element.product._id !== product._id)
-      setCart(newCart)
-    }
+    dispatch(cartActions.removeProduct({product,quantity:quantityRef.current}))
     setTimeout(() => setRed(false), 1000)
     setTimeout(() => setSpin(false), 500)
   }

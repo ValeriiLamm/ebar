@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import CocktailItem from "../components/CocktailItem";
 import LoadingIcon from "../components/LoadingIcon";
 import { searchForACocktail } from "../servises/server";
+import { useDispatch} from 'react-redux';
+import { errorActions } from "../store/slices/errorSlice";
 import "../styles/Homepage.css";
 
 export default function Homepage(props) {
-  const { setErrorMessage } = props;
+  const dispatch = useDispatch()
   const [ingredients, setIngredients] = useState([""]);
   const [tags, setTags] = useState([""]);
   const [title, setTitle] = useState("");
@@ -29,7 +31,7 @@ export default function Homepage(props) {
         (prev[index] = ""),
         ...prev.slice(index + 1),
       ]);
-    } else setErrorMessage("No more then 5 ingredients");
+    } else dispatch(errorActions.setError("No more then 5 ingredients"));
   };
 
   const removeTheIngredient = (e, index) => {
@@ -39,7 +41,7 @@ export default function Homepage(props) {
         ...prev.slice(0, index),
         ...prev.slice(index + 1),
       ]);
-    } else setErrorMessage("Need at least one ingredient");
+    } else dispatch(errorActions.setError("Need at least one ingredient"));
   };
 
   const addNewTag = (e, index) => {
@@ -50,14 +52,14 @@ export default function Homepage(props) {
         (prev[index] = ""),
         ...prev.slice(index + 1),
       ]);
-    } else setErrorMessage("No more then 5 tags");
+    } else dispatch(errorActions.setError("No more then 5 tags"));
   };
 
   const removeTheTag = (e, index) => {
     e.preventDefault();
     if (tags.length > 1) {
       setTags((prev) => [...prev.slice(0, index), ...prev.slice(index + 1)]);
-    } else setErrorMessage("Need at least one tag");
+    } else dispatch(errorActions.setError("Need at least one tag"));
   };
 
   const handleNewTag = (value, index) => {
@@ -78,12 +80,12 @@ export default function Homepage(props) {
       });
       setLoading(false);
       if (cocktailList.data.data.length === 0) {
-        setErrorMessage('No cocktails were found')
+        dispatch(errorActions.setError('No cocktails were found'));
       }
       setCocktailList(cocktailList.data.data);
     } catch (err) {
       console.log(err);
-      setErrorMessage(err.data.message);
+      dispatch(errorActions.setError(err.data.message));
     }
   }
 
@@ -94,8 +96,8 @@ export default function Homepage(props) {
         {loading && <LoadingIcon/>}
         {cocktailList.length > 0 && <h4>Suggestions:</h4>}
         {cocktailList.length > 0 && <div className="cocktailContainer">
-          {cocktailList.map((e) => (
-            <CocktailItem cocktail={e}/>
+          {cocktailList.map((e,i) => (
+            <CocktailItem key={i} cocktail={e}/>
           ))}
           </div>}
         {cocktailList.length < 1 && !loading && (
@@ -103,7 +105,7 @@ export default function Homepage(props) {
             <h4>What ingredients do you have?</h4>
             <div className="ingredients">
               {ingredients.map((e, i) => (
-                <div>
+                <div key={i}>
                   <input
                     onChange={(event) =>
                       handleNewIngredients(event.target.value, i)

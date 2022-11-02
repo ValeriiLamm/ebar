@@ -1,28 +1,20 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../store/slices/cartSlice';
 import '../styles/Checkout.css'
 import ImageGroup from "./ImageGroup";
 
 export default function CheckoutItem(props) {
-    const {product, setCart, cart, index} = props
+    const {product} = props
     const productItem = product.product
+    const dispatch = useDispatch()
 
     function removeItem () {
-        if (product.quantity > 1) {
-          const newQuantity = product.quantity - 1
-          setCart(prev => (
-            [...prev.slice(0,index), prev[index] = {...prev[index], quantity: newQuantity}, ...prev.slice(index+1)]
-        ))
-        }
-        if (product.quantity === 1) {
-          const newCart = cart.filter((e) => e.product._id !== productItem._id)
-          setCart(newCart)
-        }
+        dispatch(cartActions.removeProduct({product:productItem,quantity:product.quantity - 1}))
     }
 
     function addItem () {
-        setCart(prev => (
-          [...prev.slice(0,index), prev[index] = {...prev[index], quantity: prev[index].quantity + 1}, ...prev.slice(index+1)]
-        ))
+        dispatch(cartActions.addProduct({product:productItem,quantity:product.quantity+1}))
     }
 
   return (

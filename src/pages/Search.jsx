@@ -8,13 +8,13 @@ import SideBar from '../components/SideBar'
 import { getAllProducts, getSearchData, searchForProducts } from '../servises/server'
 import { useEffect } from 'react'
 import LoadingIcon from '../components/LoadingIcon'
+import { useDispatch } from 'react-redux';
+import { errorActions } from '../store/slices/errorSlice'
 
 
 export default function Search(props) {
-  const {setErrorMessage} = props
-  const {
-    // setErrorMessage, 
-    setCart, cart, setSpin} = props
+  const { setSpin} = props
+  const dispatch = useDispatch()
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const [tags, setTags] = useState([])
@@ -295,7 +295,7 @@ export default function Search(props) {
       setLoading(true)
       const allProducts = await getAllProducts()
       if (allProducts.status !== 201) {
-        setErrorMessage('Server error, please try again later')
+        dispatch(errorActions.setError('Server error, please try again later'))
       }
       else {
         setProducts(allProducts.data.data)
@@ -330,7 +330,7 @@ export default function Search(props) {
         )}
       {loading && <LoadingIcon/>}
        {!loading && products.map((element) => (
-      <ProductCard setSpin={setSpin} cart={cart} setCart={setCart} searchProduct={product} setProduct={setProduct} key={element._id} product={element}/>
+      <ProductCard setSpin={setSpin} searchProduct={product} setProduct={setProduct} key={element._id} product={element}/>
        ))}
       </div>
     </div>

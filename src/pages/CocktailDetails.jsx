@@ -6,9 +6,11 @@ import "../styles/CocktailDetails.css"
 import LoadingIcon from "../components/LoadingIcon.jsx"
 import CocktailItem from '../components/CocktailItem'
 import ImageGroup from '../components/ImageGroup'
+import { useDispatch } from 'react-redux'
+import { listActions } from '../store/slices/listSlice'
 
 export default function (props) {
-    const {setWishList} = props
+    const dispatch = useDispatch()
     let {_id} = useParams()
     const [cocktail, setCocktail] = useState()
     const [suggestions, setSuggestions]= useState([])
@@ -29,9 +31,9 @@ export default function (props) {
       }
     }
 
-    function addToWishList (item) {
-        setWishList(prev => [...prev, item])
-    }
+    // function addToWishList (item) {
+    //     setWishList(prev => [...prev, item])
+    // }
 
   useEffect(() => {
     (async () => {
@@ -59,7 +61,7 @@ export default function (props) {
         <h4>{cocktail.name}</h4>
         <h5>Ingredients:</h5>
         <ul>{cocktail.ingredients.map((e) => (
-          <li><span>{e}</span><button onClick={() => addToWishList(e)}>To checklist</button></li>
+          <li><span>{e}</span><button onClick={() => dispatch(listActions.addToWishList(e))}>To checklist</button></li>
         ))}</ul>
         </div>
         </div>
